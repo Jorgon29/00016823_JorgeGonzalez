@@ -9,7 +9,6 @@ import kotlinx.coroutines.flow.StateFlow
 class RestaurantViewModel: ViewModel() {
     private val _restaurant = MutableStateFlow<Restaurant?>(null)
     val restaurant: StateFlow<Restaurant?> = _restaurant
-
     fun loadRestaurant(id: Int){
         val thisRestaurants = restaurants
         thisRestaurants.forEach { thisRestaurant ->

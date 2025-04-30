@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 object RestaurantListNavigation
 
 @Serializable
-object RestaurantMenuNavigation
+data class RestaurantMenuNavigation(val id: Int)
 
 @Serializable
 object GeneralSearchNavigation

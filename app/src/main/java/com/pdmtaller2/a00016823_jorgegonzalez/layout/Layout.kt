@@ -15,13 +15,18 @@ import com.pdmtaller2.a00016823_jorgegonzalez.screens.GeneralSearchNavigation
 import com.pdmtaller2.a00016823_jorgegonzalez.screens.MyOrdersNavigation
 import com.pdmtaller2.a00016823_jorgegonzalez.screens.RestaurantListNavigation
 import com.pdmtaller2.a00016823_jorgegonzalez.screens.RestaurantMenuNavigation
-import com.pdmtaller2.a00016823_jorgegonzalez.views.GeneralSearch
+import com.pdmtaller2.a00016823_jorgegonzalez.views.generalsearch.GeneralSearch
 import com.pdmtaller2.a00016823_jorgegonzalez.views.MyOrders
-import com.pdmtaller2.a00016823_jorgegonzalez.views.RestaurantsList
+import com.pdmtaller2.a00016823_jorgegonzalez.views.restaurantsList.RestaurantsList
+import com.pdmtaller2.a00016823_jorgegonzalez.views.restaurantview.RestaurantView
 
 @Composable
 fun Layout(){
     val navController = rememberNavController()
+    val onRestaurantClick = {
+            restaurantId: Int ->
+        navController.navigate(RestaurantMenuNavigation(restaurantId))
+    }
     Scaffold(
         bottomBar = {CustomNavBar(navController)}
     ) {
@@ -38,15 +43,16 @@ fun Layout(){
                 startDestination = RestaurantListNavigation
             ) {
                 composable<RestaurantListNavigation> {
-                    RestaurantsList()
+
+                    RestaurantsList(onRestaurantClick)
                 }
 
                 composable<RestaurantMenuNavigation> {
-
+                    RestaurantView(it.arguments?.getInt("id") ?: 1) { navController.popBackStack() }
                 }
 
                 composable<GeneralSearchNavigation> {
-                    GeneralSearch()
+                    GeneralSearch(onRestaurantClick)
                 }
 
                 composable<MyOrdersNavigation> {

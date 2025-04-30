@@ -7,6 +7,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import com.pdmtaller2.a00016823_jorgegonzalez.R
 
 @Composable
 fun MyOrders(){
@@ -15,6 +17,6 @@ fun MyOrders(){
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        Text(text = "Pantalla de órdenes")
+        Text(text = stringResource(R.string.order_screen))
     }
 }
